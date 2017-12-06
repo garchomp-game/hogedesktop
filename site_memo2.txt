@@ -1,0 +1,34 @@
+__controller__
+
+    new{
+      オーバーライドしてfacebook & twitterでのログイン処理追加
+    }
+
+  users/sessions
+    create{
+      オーバーライドしてログイン
+    }
+  users/omniauth
+    facebook
+    twitter
+    google
+
+    callback_form(provider)
+      user=User.find_for_oauthなどの処理を記述
+
+  micropost
+    resourcesで一括作成。画像はE3を使用。
+
+
+
+
+__model__
+  omniauth
+    self.find_for_oauth(auth) # -> authにfacebook twitter googleなどが入る。
+
+  microposts
+    validates
+      title = presence: true, length: {maximum: 50}
+      contont = presence: true, length: {minimum: 100}
+
+    mount_uploader :image, ImageUploader

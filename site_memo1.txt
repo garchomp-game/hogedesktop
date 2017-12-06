@@ -1,0 +1,64 @@
+サイトマップ＆構成
+
+ホーム
+  ヘッダー
+    タイトル
+      [ログイン、新規登録、コラムページ、記事一覧],[ログアウト、マイページ、コラムページ、記事一覧]
+
+  メインコンテンツ
+    最新記事一覧（ページネーション）
+
+  フッダー
+
+ログインフォーム
+  _フォーム
+    名前
+    メアド
+    パスワード
+    サブミット -> ホーム
+
+  SNSでログイン
+
+新規登録フォーム
+  _フォーム
+    名前
+    メアド
+    パスワード
+    サブミット -> ホーム
+
+  SNSで新規登録　もし登録済みだったら（ホーム画面遷移後、（すでに登録済みです）。をnoticeで表示する。）
+
+記事一覧ページ
+  ログインユーザー ? 記事投稿ボタン表示　：　何も表示しない。
+  検索ボックス
+  記事一覧（ページネーション）
+
+記事投稿ページ
+  タイトルボックス
+  画像ボックス
+  テキストボックス
+  サブミット -> 記事一覧ページ
+
+コラムページ
+  運営主の簡単な自己紹介
+  つぶやき集など
+
+
+流れ確認
+
+ホーム
+  root_path(home/index)
+ログイン
+  new_users_session : users_session , partial{_sign_form}
+ログアウト
+  destroy_users_session(delete) , partial{_sign_form}
+新規登録
+  new_users_registration : users_registration , partial{_user_form}
+マイページ変更
+  edit_users_registration(get) : edit_users_registration(patch/put) , partial{_users_form}
+記事投稿ページ
+  microposts_edit : microposts_create
+記事一覧ページ
+  microposts_show
+コラムページ
+  host_index

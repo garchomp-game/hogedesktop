@@ -1,0 +1,36 @@
+__routes__
+
+root 'home#index'
+devise_for :users, :controllers => {
+  :registrations => "registrations"
+}
+resources :users, only: []
+resources :microposts
+
+
+
+
+__views__
+
+layout
+  _header
+  _fooder
+
+devise -> devise:views
+  session
+    new(ログイン)
+
+  registratons
+    new（新規登録）
+    edit（マイページ変更）
+    _registration_form(new edit)
+
+microposts -> scaffold
+  show(記事一覧)
+  edit(記事編集)
+
+home -> controller home index
+  index(トップページ)
+
+shared -> 手動
+  _paginate{一覧表示（microposts/show home/index)}
